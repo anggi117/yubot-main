@@ -2,15 +2,16 @@
   "name": "js-masterduel-discord",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon ./index.js",
+    "start": "nodemon .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "CuT-Ting",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "discord.js": "^14.5.0",
     "dotenv": "^16.0.2",
     "nodemon": "^2.0.20"
