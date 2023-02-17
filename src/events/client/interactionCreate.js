@@ -1,3 +1,6 @@
+const { InteractionType } = require("discord.js");
+const { ErrorLog } = require("../../helpers");
+
 module.exports = {
   name: "interactionCreate",
   async execute(interaction, client) {
@@ -15,7 +18,20 @@ module.exports = {
           content: "Something went wrong while executing this command...",
           ephemeral: true,
         });
-        console.log(e);
+        ErrorLog(e);
+      }
+    } else if (
+      interaction.type == InteractionType.ApplicationCommandAutocomplete
+    ) {
+      const { commands } = client;
+      const { commandName } = interaction;
+      const command = commands.get(commandName);
+      if (!command) return;
+
+      try {
+        await command.autocomplete(interaction, client);
+      } catch (e) {
+        ErrorLog(e);
       }
     }
   },

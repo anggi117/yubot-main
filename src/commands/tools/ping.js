@@ -16,6 +16,6 @@ module.exports = {
       content: newMessage,
     });
 
-    interaction.user.send(newMessage);
+    // interaction.user.send(newMessage); //Send Message to user
   },
 };

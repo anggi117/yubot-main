@@ -1,5 +1,5 @@
-require("dotenv").config();
 const axios = require("axios");
+const { ErrorLog } = require("../helpers");
 
 module.exports = (name) => {
   try {
@@ -10,6 +10,6 @@ module.exports = (name) => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    ErrorLog(error);
   }
 };
