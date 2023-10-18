@@ -1,0 +1,12 @@
+version: "3"
+services:
+  yubot-mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+  yubot:
+    image: yubot:v1.0
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: npm start
