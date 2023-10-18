@@ -1,5 +1,7 @@
 const redis = require("redis");
-const client = redis.createClient(6379);
+const client = redis.createClient({
+  url: "redis://yubot-redis:6379",
+});
 const ErrorLog = require("./errorlog");
 
 client.connect();
@@ -8,7 +10,7 @@ const setKey = async function (key, name) {
   try {
     client.setEx(key, 3600, name); // just 1 minute
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
