@@ -5,7 +5,7 @@ const axios = require("axios");
 const oneData = function (name) {
   try {
     const data = axios
-      .get(`${process.env.API_YGO}/cardinfo.php?fname=${name}&format=tcg`)
+      .get(`${process.env.API_YGO}/cardinfo.php?fname=${name}&format=ocg`)
       .then((res) => res.data.data[0]);
 
     return data;
@@ -17,7 +17,7 @@ const oneData = function (name) {
 const allData = function (name) {
   try {
     const data = axios
-      .get(`${process.env.API_YGO}/cardinfo.php?fname=${name}&format=tcg`)
+      .get(`${process.env.API_YGO}/cardinfo.php?fname=${name}&format=ocg`)
       .then((res) => res.data);
 
     return data;
@@ -26,18 +26,26 @@ const allData = function (name) {
   }
 };
 
+const searchById = function (id) {
+  try {
+    const data = axios
+      .get(`${process.env.API_YGO}/cardinfo.php?id=${id}`)
+      .then((res) => res.data.data[0]);
+
+    return data;
+  } catch (error) {
+    ErrorLog(error);
+  }
+};
+const randomCard = function () {
+  try {
+  } catch (error) {
+    ErrorLog(error);
+  }
+};
+
 module.exports = {
   oneData,
   allData,
+  searchById,
 };
-// module.exports = (name) => {
-//   try {
-//     const data = axios
-//       .get(`${process.env.API_YGO}/cardinfo.php?fname=${name}&format=tcg`)
-//       .then((res) => res.data.data[0]);
-
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };

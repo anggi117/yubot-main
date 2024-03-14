@@ -12,12 +12,14 @@ const choiceName = async function (name) {
     return await Promise.all(promises);
   } catch (error) {
     if (
-      error.response.data.error !=
+      error.response.data.error ==
       "No card matching your query was found in the database. Please see https://db.ygoprodeck.com/api-guide/ for syntax usage."
     ) {
+      return [];
+    } else {
       ErrorLog(error);
+      return false;
     }
-    return [];
   }
 };
 
@@ -140,12 +142,12 @@ const obtain = function (data) {
   if (data.obtain.length !== 0) {
     let forEmbed = "";
     for (let i = 0; i < data.obtain.length; i++) {
-      const datas = {
+      const callData = {
         name: data.obtain[i].source.name,
         url: data.obtain[i].source.name.split(" ").join("-"),
       };
 
-      forEmbed += `[${datas.name}](https://masterduelmeta.com/article/sets/${datas.url})\n`;
+      forEmbed += `[${callData.name}](https://masterduelmeta.com/article/sets/${callData.url})\n`;
     }
     return forEmbed;
   }
@@ -177,11 +179,11 @@ module.exports = {
 
     const ygoProData = await ygopro.oneData(checkString);
     const data = await mdm(ygoProData.name);
-    const raritysEmoji = parseRarity(data.rarity);
+    const rarityEmoji = parseRarity(data.rarity);
     const cards = card(data);
     const convertName = encodeURIComponent(data.name);
     const obtains = obtain(data);
-    const title = data.rarity ? `${data.name} ${raritysEmoji}` : data.name;
+    const title = data.rarity ? `${data.name} ${rarityEmoji}` : data.name;
     const embed =
       data.type == "Monster"
         ? new EmbedBuilder()

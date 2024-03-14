@@ -1,7 +1,8 @@
-const Redis = require("./redis");
 const ErrorLog = require("./errorlog");
-
+const readYdk = require("./readYdk");
+const createDeck = require("./createDeck");
 module.exports = {
-  Redis,
   ErrorLog,
+  readYdk,
+  createDeck,
 };

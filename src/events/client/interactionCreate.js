@@ -1,4 +1,4 @@
-const { InteractionType } = require("discord.js");
+const { InteractionType, InteractionCollector } = require("discord.js");
 const { ErrorLog } = require("../../helpers");
 
 module.exports = {
@@ -14,6 +14,27 @@ module.exports = {
         await command.execute(interaction, client);
         return;
       } catch (e) {
+        if (e.response) {
+          if (
+            e.message == `Request failed with status code ${e.response.status}`
+          ) {
+            if (
+              e.response.data.error ==
+              "No card matching your query was found in the database. Please see https://db.ygoprodeck.com/api-guide/ for syntax usage."
+            ) {
+              await interaction.reply({
+                content: "Card not found.",
+                ephemeral: true,
+              });
+            } else {
+              ErrorLog(e);
+            }
+          } else {
+            ErrorLog(e);
+          }
+
+          return false;
+        }
         await interaction.reply({
           content: "Something went wrong while executing this command...",
           ephemeral: true,
