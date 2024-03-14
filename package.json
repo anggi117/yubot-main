@@ -14,9 +14,15 @@
     "axios": "^0.27.2",
     "discord.js": "^14.5.0",
     "dotenv": "^16.0.2",
+    "jimp": "^0.22.10",
     "mongodb": "^5.0.1",
     "mongoose": "^6.9.1",
     "nodemon": "^2.0.20",
+    "openai": "^3.3.0",
     "redis": "^4.6.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anggi117/yubot-main.git"
   }
 }
