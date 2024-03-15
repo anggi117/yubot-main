@@ -11,6 +11,7 @@
   "author": "CuT-Ting",
   "license": "ISC",
   "dependencies": {
+    "@adityaypz/tea-noodle": "^3.1.2",
     "axios": "^0.27.2",
     "discord.js": "^14.5.0",
     "dotenv": "^16.0.2",
