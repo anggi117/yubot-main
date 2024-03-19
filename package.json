@@ -12,9 +12,13 @@
   "license": "ISC",
   "dependencies": {
     "@adityaypz/tea-noodle": "^3.1.2",
+    "amiyadon": "^1.1.4",
     "axios": "^0.27.2",
+    "diennshera": "^1.1.5",
     "discord.js": "^14.5.0",
     "dotenv": "^16.0.2",
+    "hello-npm-ary": "^1.0.1",
+    "hijauan": "^0.1.0",
     "jimp": "^0.22.10",
     "mongodb": "^5.0.1",
     "mongoose": "^6.9.1",
